@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Add Operation | Towing Operations</title>
+	<style>
+		:root{--ink:#102a43;--muted:#5b7083;--paper:#f3f7fa;--panel:#fff;--line:#d6e2eb;--teal:#0067a8;--teal-dark:#004b7a;--red:#b94b45;--shadow:0 10px 24px rgba(16,42,67,.08)}
+		*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 "Trebuchet MS",Arial,sans-serif}.wrap{max-width:1040px;margin:auto;padding:28px 34px 52px}.top{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:25px}.wordmark{display:inline-flex;align-items:center;gap:9px;margin-bottom:17px;font:700 20px/1 "Trebuchet MS",Arial,sans-serif;letter-spacing:.12em}.wordmark::before{content:"";width:5px;height:32px;background:var(--teal);border-radius:2px}.wordmark strong{color:var(--teal)}.eyebrow{color:var(--teal);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.top h1{font:700 clamp(28px,4vw,44px)/1.04 Georgia,serif;margin:7px 0 8px}.sub,.hint{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:19px}.panel h2{font:700 21px Georgia,serif;margin:0 0 4px}.hint{font-size:12px;margin:0 0 17px}.entry-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.entry-field{display:grid;gap:5px}.entry-field.wide{grid-column:span 2}.entry-field label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}.entry-field input,.entry-field select,.entry-field textarea{width:100%;border:1px solid var(--line);border-radius:4px;background:#fff;padding:9px 10px;color:var(--ink);font:inherit}.entry-field input,.entry-field select{height:38px}.entry-field textarea{min-height:72px;resize:vertical}.check-grid{display:flex;flex-wrap:wrap;gap:8px 14px;padding-top:7px}.check-grid label{font-size:12px;color:var(--ink);font-weight:400;text-transform:none;letter-spacing:0}.check-grid input{width:auto;height:auto;margin-right:5px}.actions{display:flex;align-items:center;gap:12px;margin-top:15px}.button{display:inline-flex;align-items:center;justify-content:center;height:38px;border:0;border-radius:4px;padding:0 15px;background:var(--ink);color:#fff;font-weight:700;text-decoration:none;cursor:pointer}.button:hover{background:var(--teal-dark)}.button.secondary{background:#eef4f8;color:var(--ink);border:1px solid var(--line)}.button:disabled{opacity:.55;cursor:not-allowed}.message{color:var(--muted);font-size:12px}.message.error{color:var(--red)}.message.success{color:var(--teal-dark)}
+		@media(max-width:620px){.wrap{padding:20px 14px 38px}.top{align-items:flex-start;flex-direction:column}.entry-grid{grid-template-columns:1fr 1fr}.entry-field.wide{grid-column:1/-1}.actions{align-items:flex-start;flex-direction:column}}
+	</style>
+</head>
+<body>
+	<main class="wrap">
+		<header class="top">
+			<div><div class="wordmark"><strong>JET</strong><span>AVIATION</span></div><div class="eyebrow">FBO / pushback + towing log</div><h1>Add operation</h1><p class="sub">Record a new movement in the Excel operational log.</p></div>
+			<a class="button secondary" href="./dashboard.html">Back to dashboard</a>
+		</header>
+		<section class="panel">
+			<h2>Operation details</h2>
+			<p class="hint">Required fields are marked with an asterisk. The submission is sent to Excel through Power Automate.</p>
+			<form id="entry-form">
+				<div class="entry-grid">
+					<div class="entry-field"><label for="entry-sn">S/N *</label><input id="entry-sn" name="sn" required></div>
+					<div class="entry-field"><label for="entry-date">Date *</label><input id="entry-date" name="date" type="date" required></div>
+					<div class="entry-field"><label for="entry-time">Time *</label><input id="entry-time" name="time" type="time" required></div>
+					<div class="entry-field"><label for="entry-aircraft-reg">Aircraft registration *</label><input id="entry-aircraft-reg" name="registration" required></div>
+					<div class="entry-field"><label for="entry-aircraft-type">Aircraft type *</label><input id="entry-aircraft-type" name="aircraft" required></div>
+					<div class="entry-field"><label for="entry-movement">Movement *</label><select id="entry-movement" name="movement" required><option value="">Select movement</option><option value="pushback">Pushback</option><option value="tow">Tow</option><option value="both">Pushback + tow</option></select></div>
+					<div class="entry-field"><label for="entry-from">From *</label><input id="entry-from" name="from" required></div>
+					<div class="entry-field"><label for="entry-to">To *</label><input id="entry-to" name="to" required></div>
+					<div class="entry-field"><label for="entry-operator">Operator *</label><input id="entry-operator" name="operator" required></div>
+					<div class="entry-field"><label for="entry-job">Job no. *</label><input id="entry-job" name="job" required></div>
+					<div class="entry-field"><label for="entry-checked">Checked by</label><input id="entry-checked" name="checkedBy"></div>
+					<div class="entry-field"><label for="entry-assistant-1">Assistant 1</label><input id="entry-assistant-1" name="assistant1"></div>
+					<div class="entry-field"><label for="entry-assistant-2">Assistant 2</label><input id="entry-assistant-2" name="assistant2"></div>
+					<div class="entry-field"><label for="entry-assistant-3">Assistant 3</label><input id="entry-assistant-3" name="assistant3"></div>
+					<div class="entry-field wide"><label>Equipment</label><div class="check-grid"><label><input type="checkbox" name="equipment" value="AT1">AT1</label><label><input type="checkbox" name="equipment" value="AT2">AT2</label><label><input type="checkbox" name="equipment" value="AT3">AT3</label><label><input type="checkbox" name="equipment" value="AT4">AT4</label><label><input type="checkbox" name="equipment" value="AT5">AT5</label><label><input type="checkbox" name="equipment" value="AT6">AT6</label><label><input type="checkbox" name="equipment" value="AT10">AT10</label></div></div>
+					<div class="entry-field wide"><label>Service</label><div class="check-grid"><label><input type="checkbox" name="service" value="FBO">FBO</label><label><input type="checkbox" name="service" value="NON FBO">NON FBO</label><label><input type="checkbox" name="service" value="MXX">MXX</label><label><input type="checkbox" name="service" value="NON JET">NON JET</label><label><input type="checkbox" name="service" value="HGR / CMP CTR">HGR / CMP CTR</label></div></div>
+					<div class="entry-field wide"><label for="entry-remarks">Remarks</label><textarea id="entry-remarks" name="remarks"></textarea></div>
+					<div class="entry-field"><label for="entry-error">Error</label><input id="entry-error" name="error"></div>
+					<div class="entry-field"><label for="entry-error-remarks">Error remarks</label><input id="entry-error-remarks" name="errorRemarks"></div>
+				</div>
+				<div class="actions"><button id="submit-entry" class="button" type="submit">Submit operation</button><span id="entry-message" class="message" role="status"></span></div>
+			</form>
+		</section>
+	</main>
+	<script>
+		const POWER_AUTOMATE_URL = 'PASTE_POWER_AUTOMATE_HTTP_URL_HERE';
+		const clean = value => String(value ?? '').replace(/\s+/g,' ').trim();
+		const $ = id => document.getElementById(id);
+		function checkedValues(name){return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(input=>input.value)}
+		function operationPayload(form){const data=new FormData(form), movement=data.get('movement'), date=data.get('date');const equipment=checkedValues('equipment'), service=checkedValues('service');return {'S/N':clean(data.get('sn')),'DATE':date,'DAY':date?new Date(`${date}T00:00:00`).toLocaleDateString('en-US',{weekday:'short'}):'','TIME':clean(data.get('time')),'A/C Regn':clean(data.get('registration')),'A/C Type':clean(data.get('aircraft')),'PB/TOW':movement==='both'?1:0,'PB':movement==='pushback'||movement==='both'?1:0,'TOW':movement==='tow'||movement==='both'?1:0,'FROM':clean(data.get('from')),'TO':clean(data.get('to')),'AT1':equipment.includes('AT1')?1:0,'AT2':equipment.includes('AT2')?1:0,'AT3':equipment.includes('AT3')?1:0,'AT4':equipment.includes('AT4')?1:0,'AT5':equipment.includes('AT5')?1:0,'AT6':equipment.includes('AT6')?1:0,'AT10':equipment.includes('AT10')?1:0,'OPERATOR':clean(data.get('operator')),'ASSISTANT 1':clean(data.get('assistant1')),'ASSISTANT 2':clean(data.get('assistant2')),'ASSISTANT 3':clean(data.get('assistant3')),'FBO':service.includes('FBO')?1:0,'NON FBO':service.includes('NON FBO')?1:0,'MXX':service.includes('MXX')?1:0,'NON JET':service.includes('NON JET')?1:0,'HGR / CMP CTR':service.includes('HGR / CMP CTR')?1:0,'Checked by':clean(data.get('checkedBy')),'REMARKS':clean(data.get('remarks')),'JOB NO.':clean(data.get('job')),'ERROR':clean(data.get('error')),'ERROR REMARKS':clean(data.get('errorRemarks'))}}
+		function setMessage(message,type){const element=$('entry-message');element.textContent=message;element.className=`message ${type||''}`}
+		async function submitOperation(event){event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;if(POWER_AUTOMATE_URL.startsWith('PASTE_')){setMessage('Configure the Power Automate HTTP URL in this page before submitting.','error');return}const button=$('submit-entry');button.disabled=true;setMessage('Submitting operation...');try{const response=await fetch(POWER_AUTOMATE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(operationPayload(form))});if(!response.ok)throw new Error(`Power Automate request failed (${response.status})`);setMessage('Operation added. Opening the refreshed dashboard...','success');window.location.href=`./dashboard.html?updated=${Date.now()}`}catch(error){setMessage(error.message,'error');button.disabled=false}}
+		$('entry-form').addEventListener('submit',submitOperation);if(POWER_AUTOMATE_URL.startsWith('PASTE_')){$('submit-entry').disabled=true;setMessage('Configure the Power Automate HTTP URL to enable submissions.','error')}
+	</script>
+</body>
+</html>
